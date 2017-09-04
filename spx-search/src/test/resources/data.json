@@ -1,0 +1,112 @@
+[
+  {
+    "id": 241,
+    "codigo": "guante",
+    "descripcion": "guante",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": null,
+    "precio": 1,
+    "nombre_uen": "Metalsa Saltillo",
+    "tiempo_entrega": 1,
+    "fecha_creacion": "2017-08-03T14:51:35.000Z"
+  },
+  {
+    "id": 1541,
+    "codigo": "46242",
+    "descripcion": "98 - Libreta De Bolsillo Negra. Con 3 Blocks De Repuesto. Modelo: 46242. Marca: Hazel - NA",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": "ROJO",
+    "precio": 37,
+    "nombre_uen": "Metalsa Light Truck",
+    "tiempo_entrega": 200,
+    "fecha_creacion": "2017-03-30T15:58:51.000Z"
+  },
+  {
+    "id": 1546,
+    "codigo": "61324",
+    "descripcion": "191 - Papel Ofixpress Blanco. Tama¿o: Carta. Presentacion: Caja con 5000 Hojas. Modelo: 61324. Marca: OfiXpres. Blancura: 92%.",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": null,
+    "precio": 438,
+    "nombre_uen": "Metalsa Light Truck",
+    "tiempo_entrega": 5,
+    "fecha_creacion": "2017-03-30T15:58:51.000Z"
+  },
+  {
+    "id": 1551,
+    "codigo": "1553",
+    "descripcion": "106 - Broche 8Cm Color Plata. Caja Con 50 Piezas. Modelo: P1580. Marca: Acco - NA",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": null,
+    "precio": 25,
+    "nombre_uen": "Metalsa Light Truck",
+    "tiempo_entrega": 5,
+    "fecha_creacion": "2017-03-30T15:58:51.000Z"
+  },
+  {
+    "id": 1552,
+    "codigo": "16567",
+    "descripcion": "177 - Marcador Permanente Sharpie Punto Fino Negro. Blister 2 Pzas. Modelo:27008043527. Marca: Sanford - NA",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": null,
+    "precio": 20.5,
+    "nombre_uen": "Metalsa Light Truck",
+    "tiempo_entrega": 5,
+    "fecha_creacion": "2017-03-30T15:58:51.000Z"
+  },
+  {
+    "id": 1732,
+    "codigo": "46242",
+    "descripcion": "98 - Libreta De Bolsillo Negra. Con 3 Blocks De Repuesto. Modelo: 46242. Marca: Hazel - NA",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": "ROJO",
+    "precio": 37,
+    "nombre_uen": "Metalsa Light Truck",
+    "tiempo_entrega": 200,
+    "fecha_creacion": "2017-03-30T15:58:52.000Z"
+  },
+  {
+    "id": 1736,
+    "codigo": "6",
+    "descripcion": "05 - Boligrafo Tinta Negra. Punto Fino. Caja Con 12 Piezas. Modelo: F290C-N. Marca: Bic - NA",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": null,
+    "precio": 27.5,
+    "nombre_uen": "Metalsa Light Truck",
+    "tiempo_entrega": 5,
+    "fecha_creacion": "2017-03-30T15:58:52.000Z"
+  },
+  {
+    "id": 1738,
+    "codigo": "7258",
+    "descripcion": "141 - Lapiz Adhesivo 20Gr Pieza. Modelo: 975994. Marca: Pritt - NA",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": null,
+    "precio": 18.75,
+    "nombre_uen": "Metalsa Light Truck",
+    "tiempo_entrega": 5,
+    "fecha_creacion": "2017-03-30T15:58:52.000Z"
+  },
+  {
+    "id": 1739,
+    "codigo": "10735",
+    "descripcion": "162 - Cuenta Facil. Blister Con 2 Piezas. Cera Antiderrapante Para Facil Conteo De Papeles. Modelo: 642. Marca: Azor - NA",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": null,
+    "precio": 13,
+    "nombre_uen": "Metalsa Light Truck",
+    "tiempo_entrega": 5,
+    "fecha_creacion": "2017-03-30T15:58:52.000Z"
+  },
+  {
+    "id": 1741,
+    "codigo": "11052",
+    "descripcion": "165 - Cuaderno Profesional Clasico. 100Hojas Cuadro 5. Modelo: S2902. Marca: Scribe - NA",
+    "proveedor": "OFFICE DEPOT DE MEXICO S.A. DE C.V.",
+    "color": null,
+    "precio": 29.75,
+    "nombre_uen": "Metalsa Light Truck",
+    "tiempo_entrega": 5,
+    "fecha_creacion": "2017-03-30T15:58:52.000Z"
+  }
+]
