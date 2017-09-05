@@ -16,6 +16,7 @@ import lombok.extern.log4j.Log4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.response.FieldStatsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
@@ -26,10 +27,9 @@ import org.vaadin.viritin.layouts.MVerticalLayout;
 import java.text.MessageFormat;
 import java.text.NumberFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -95,7 +95,10 @@ public class SearchUI extends UI {
         bar.setWidth("100%");
         status = new Label("not running");
         indexButton = new Button("Indexar todo");
+        indexButton.setWidth("130px");
         reIndexButton = new Button("Actualizar");
+        reIndexButton.setWidth("130px");
+
 
         sStatus = new Label("");
         sStatus.setVisible(true);
@@ -115,14 +118,16 @@ public class SearchUI extends UI {
         });
 
         reIndexButton.addClickListener(event -> {
-            new Thread(() -> indexAll()).start();
+            new Thread(() -> reIndex()).start();
             startIndex(event);
         });
 
         MVerticalLayout progress = new MVerticalLayout(bar, status)
                 .withFullSize()
                 .withMargin(false);
-        MHorizontalLayout header = new MHorizontalLayout(indexButton, progress)
+        MHorizontalLayout header = new MHorizontalLayout(new MVerticalLayout(indexButton, reIndexButton)
+                .withMargin(false)
+                .withSizeUndefined(), progress)
                 .withFullWidth()
                 .withExpand(progress, 1.0f);
 
@@ -223,6 +228,49 @@ public class SearchUI extends UI {
 
         getUI().access(() -> indexButton.setEnabled(true));
     }
+
+    protected void reIndex() {
+        long current = 0;
+        FieldStatsInfo stats = service.statsInfo("fechaCreacion");
+        LocalDateTime last = LocalDateTime.ofInstant(((Date)service.statsInfo("fechaCreacion").getMax()).toInstant(),
+                ZoneId.systemDefault());
+        final long total = db.countByFechaCreacionGreaterThanEqualOrderByIdAsc(last);
+
+        log.debug(MessageFormat.format("obteniendo {0} items...", total));
+
+        getUI().access(() -> status.setValue(MessageFormat.format("indexados {0} de {1} -- {2}% done",
+                0, total, 0f)));
+
+        int page = 0;
+        Slice<DataItem> slice;
+        StopWatch watch = new StopWatch();
+        watch.start();
+        do {
+            slice = db.findAllByFechaCreacionGreaterThanEqualOrderByIdAsc(last, new PageRequest(page++, 50));
+            service.addItems(slice.getContent());
+            current += slice.getNumberOfElements();
+            log.debug(MessageFormat.format("reindexados {0} items...", current));
+
+            long finalCurrent = current;
+            float percent = ((float) finalCurrent / total * 100);
+            long eta = watch.getTime(TimeUnit.SECONDS) * total / current;
+            getUI().access(() -> {
+                bar.setValue((float) finalCurrent / total);
+                status.setValue(MessageFormat.format("reindexados {0} de {1}; {2}% done, ETA: {3}",
+                        finalCurrent, total, percent,
+                        Duration.ofSeconds(eta).toString()
+                                .substring(2)
+                                .replaceAll("(\\d[HMS])(?!$)", "$1 ")
+                                .toLowerCase()));
+            });
+
+        } while (!slice.isLast());
+        watch.stop();
+
+        getUI().access(() -> indexButton.setEnabled(true));
+    }
+
+
 
     @Data
     @AllArgsConstructor
